@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginPage from './screens/Login'
 import HomePage from './screens/Home'
+import RegisterPage from './screens/Register'
 
 const Index = ({pathname}) => {
 	switch(pathname) {

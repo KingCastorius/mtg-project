@@ -76,6 +76,7 @@ class RegisterPage extends React.Component {
 
           </Container>
         </form>
+      </div>
     )
   }
 }
