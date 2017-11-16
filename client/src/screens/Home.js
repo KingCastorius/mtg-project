@@ -9,7 +9,13 @@ class HomePage extends React.Component{
   render() {
     return(
       <div style={Styles.bgColor}>
-        <p>Hello world</p>
+        <Container>
+          <Row>
+            <Col>
+              <h1 style={Styles.listColor}>MTG Collection Gallery</h1>
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }

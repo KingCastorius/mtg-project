@@ -48,7 +48,8 @@ const Styles = {
 
     listColor: {
       color: '#D2D4C8',
-  		fontFamily: 'arial'
+  		fontFamily: 'arial',
+			textAlign: 'center'
     }
 
 
