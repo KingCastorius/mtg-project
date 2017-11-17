@@ -9,8 +9,7 @@ import Styles from '../styles'
 class LoginPage extends React.Component {
   state = {
     username: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   }
 
   setValue(e) {

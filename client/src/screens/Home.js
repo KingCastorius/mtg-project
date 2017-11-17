@@ -5,19 +5,18 @@ import { Button } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import Styles from '../styles'
 let key = 0
+const mtg = require('mtgsdk')
 
 class HomePage extends React.Component{
+componentWillMount() {
+  mtg.card.find(3).then(result => {
+    console.log(result.card.name) // "Black Lotus"
+})
+}
+
   state = {
     cardName: '',
     returnedCards: []
-  }
-
-  getCards(e) {
-    e.preventDefault()
-    axios.get('https://api.magicthegathering.io/search/cards?q=' + this.state.cardName.then((res) => {
-      let cards = res.data.items.map(item => <li key={key++}>{item.mtg_url}</li>)
-      this.setState({returnedCards: cards})
-    }))
   }
 
   render() {
