@@ -5,8 +5,9 @@
   "dependencies": {
     "axios": "^0.17.1",
     "mtgsdk": "^0.3.0",
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-inline-grid": "^0.5.3",
     "react-scripts": "1.0.17"
   },
   "scripts": {
