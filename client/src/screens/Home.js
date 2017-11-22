@@ -8,17 +8,20 @@ let key = 0
 const mtg = require('mtgsdk')
 
 class HomePage extends React.Component{
-componentWillMount() {
-  mtg.card.find(3).then(result => {
-    console.log(result.card.name) // "Black Lotus"
-})
-}
-
-
 
   state = {
     cardName: '',
     returnedCards: []
+  }
+
+  setValue(e) {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  getCards() {
+    mtg.card.all({ name: {e}, pageSize: 1 }).on('data', card => {
+      
+    })
   }
 
   render() {
@@ -32,13 +35,27 @@ componentWillMount() {
           </Row>
         </Container>
           <form onSubmit={(e) => this.getCards(e)}>
-            <input
-              name="cardName"
-              type="text"
-              placeholder="card name"
-              value={this.state.cardName}
-              onChange={(e) => this.setState({[e.target.name]: e.target.value})} />
-            <button type="submit">Submit</button>
+            <Row>
+              <input
+                name="cardName"
+                type="text"
+                placeholder="card name"
+                value={this.state.cardName}
+                onChange={(e) => this.setValue(e)}
+              />
+              <select>
+                <option value="name">Name</option>
+                <option value="cmc">Converted Mana Cost</option>
+                <option value="colors">Color</option>
+                <option value="type">Type</option>
+                <option value="subtypes">Subtypes</option>
+                <option value="power">Power</option>
+                <option value="toughness">Toughness</option>
+              </select>
+            </Row>
+            <Row>
+              <button type="submit" >Submit</button>
+            </Row>
           </form>
 
           <ul>
