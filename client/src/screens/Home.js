@@ -53,15 +53,15 @@ class HomePage extends React.Component{
                   value={this.state.cardName}
                   onChange={(e) => this.setValue(e)}
                 />
-                {/* <select>
-                  <option value="name">Name</option>
-                  <option value="cmc">Converted Mana Cost</option>
-                  <option value="colors">Color</option>
-                  <option value="type">Type</option>
-                  <option value="subtypes">Subtypes</option>
-                  <option value="power">Power</option>
-                  <option value="toughness">Toughness</option>
-                </select> */}
+                <select>
+                  <option value="name" onChange="">Name</option>
+                  <option value="cmc" onChange="">Converted Mana Cost</option>
+                  <option value="colors" onChange="">Color</option>
+                  <option value="type" onChange="">Type</option>
+                  <option value="subtypes" onChange="">Subtypes</option>
+                  <option value="power" onChange="">Power</option>
+                  <option value="toughness" onChange="">Toughness</option>
+                </select>
                 <div>
                   <button type="submit" >Submit</button>
                 </div>
