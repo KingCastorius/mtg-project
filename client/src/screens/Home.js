@@ -26,6 +26,7 @@ class HomePage extends React.Component{
           <h4>{card.name}</h4>
           <img src={card.imageUrl} />
         </div>
+        
       );
       this.setState({returnedCards: returnedCards});
     })
