@@ -25,8 +25,10 @@ class HomePage extends React.Component{
         <div style={Styles.arial}>
           <h4>{card.name}</h4>
           <img src={card.imageUrl} />
+          <div>
+            <Button>Add to Collection</Button>
+          </div>
         </div>
-        
       );
       this.setState({returnedCards: returnedCards});
     })
