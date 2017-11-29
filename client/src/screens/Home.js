@@ -84,3 +84,35 @@ class HomePage extends React.Component{
 }
 
 export default HomePage;
+
+// getCardsCmc(e) {
+//   e.preventDefault();
+//   mtg.card.where({ cmc: this.state.cardName }).then((result) => {
+//     let returnedCards = result.map(card =>
+//       <div style={Styles.arial}>
+//         <h4>{card.name}</h4>
+//         <img src={card.imageUrl} />
+//         <div>
+//           <Button>Add to Collection</Button>
+//         </div>
+//       </div>
+//     );
+//     this.setState({returnedCards: returnedCards});
+//   })
+// }
+// 
+// getCards(e) {
+//   e.preventDefault();
+//   mtg.card.where({ Colors: this.state.cardName }).then((result) => {
+//     let returnedCards = result.map(card =>
+//       <div style={Styles.arial}>
+//         <h4>{card.name}</h4>
+//         <img src={card.imageUrl} />
+//         <div>
+//           <Button>Add to Collection</Button>
+//         </div>
+//       </div>
+//     );
+//     this.setState({returnedCards: returnedCards});
+//   })
+// }
