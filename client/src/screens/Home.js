@@ -10,8 +10,9 @@ const mtg = require('mtgsdk')
 class HomePage extends React.Component{
 
   state = {
-    cardName: '',
-    returnedCards: []
+    cardInfo: '',
+    returnedCards: [],
+    query: ''
   }
 
   setValue(e) {
@@ -20,18 +21,19 @@ class HomePage extends React.Component{
 
   getCards(e) {
     e.preventDefault();
-    mtg.card.where({ name: this.state.cardName }).then((result) => {
-      let returnedCards = result.map(card =>
-        <div style={Styles.arial}>
-          <h4>{card.name}</h4>
-          <img src={card.imageUrl} />
-          <div>
-            <Button>Add to Collection</Button>
-          </div>
-        </div>
-      );
-      this.setState({returnedCards: returnedCards});
-    })
+    let val = this.menu.value;
+
+    if(val = 'name') {
+      mtg.card.where({ name: this.state.cardInfo}).then((res) => {
+        console.log(val)
+      })
+    } else if (val = 'cmc') {
+      mtg.card.where({ cmc: this.state.cardInfo}).then ((res) => {
+
+      })
+    } else {
+      alert('your card is not found')
+    }
   }
 
   render() {
@@ -49,25 +51,26 @@ class HomePage extends React.Component{
           <Row>
             <Cell is="desktop-12" style={Styles.arial} >
               <form onSubmit={(e) => this.getCards(e)}>
+
+                <select id="dropdown" ref={(input)=> this.menu = input}>
+                  <option value=""></option>
+                  <option value="name" >Name</option>
+                  <option value="cmc" >Converted Mana Cost</option>
+                  <option value="colors" >Color</option>
+                  <option value="type" >Type</option>
+                  <option value="subtypes" >Subtypes</option>
+                  <option value="power" >Power</option>
+                  <option value="toughness" >Toughness</option>
+                </select>
                 <input
-                  name="cardName"
+                  name="cardInfo"
                   type="text"
-                  placeholder="card name"
-                  value={this.state.cardName}
+                  placeholder="search..."
+                  value={this.state.cardInfo}
                   onChange={(e) => this.setValue(e)}
                 />
-                <select>
-                  <option value="name" onChange="">Name</option>
-                  <option value="cmc" onChange="">Converted Mana Cost</option>
-                  <option value="colors" onChange="">Color</option>
-                  <option value="type" onChange="">Type</option>
-                  <option value="subtypes" onChange="">Subtypes</option>
-                  <option value="power" onChange="">Power</option>
-                  <option value="toughness" onChange="">Toughness</option>
-                </select>
-                {/* asdfasasfafaadd */}
                 <div>
-                  <button type="submit" >Submit</button>
+                  <Button color="primary" type="submit" >Submit</Button>
                 </div>
               </form>
             </Cell>
@@ -100,7 +103,7 @@ export default HomePage;
 //     this.setState({returnedCards: returnedCards});
 //   })
 // }
-// 
+//
 // getCards(e) {
 //   e.preventDefault();
 //   mtg.card.where({ Colors: this.state.cardName }).then((result) => {
