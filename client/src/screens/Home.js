@@ -29,7 +29,7 @@ class HomePage extends React.Component{
       })
     } else if (val = 'cmc') {
       mtg.card.where({ cmc: this.state.cardInfo}).then ((res) => {
-
+        console.log(this.state)
       })
     } else {
       alert('your card is not found')
