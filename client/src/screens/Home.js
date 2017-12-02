@@ -24,8 +24,8 @@ class HomePage extends React.Component{
     let val = this.menu.value;
 
     if(val = 'name') {
-      mtg.card.where({ name: this.state.cardInfo}).then((res) => {
-        console.log(val)
+      mtg.card.where({ cmc: this.state.cardInfo}).then((res) => {
+        console.log(this.state)
       })
     } else if (val = 'cmc') {
       mtg.card.where({ cmc: this.state.cardInfo}).then ((res) => {
