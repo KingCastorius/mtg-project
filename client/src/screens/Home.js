@@ -15,25 +15,20 @@ class HomePage extends React.Component{
     query: ''
   }
 
-  setValue(e) {
-    this.setState({[e.target.name]: e.target.value})
-  }
-
   getCards(e) {
     e.preventDefault();
-    let val = this.menu.value;
-
-    if(val = 'name') {
-      mtg.card.where({ cmc: this.state.cardInfo}).then((res) => {
-        console.log(this.state)
-      })
-    } else if (val = 'cmc') {
-      mtg.card.where({ cmc: this.state.cardInfo}).then ((res) => {
-        console.log(this.state)
-      })
-    } else {
-      alert('your card is not found')
-    }
+    mtg.card.where({ name: this.state.cardInfo }).then((result) => {
+      let returnedCards = result.map(card =>
+        <div style={Styles.arial}>
+          <h4>{card.name}</h4>
+          <img src={card.imageUrl} />
+          <div>
+            <Button>Add to Collection</Button>
+          </div>
+        </div>
+      );
+      this.setState({returnedCards: returnedCards});
+    })
   }
 
   render() {
@@ -52,8 +47,8 @@ class HomePage extends React.Component{
             <Cell is="desktop-12" style={Styles.arial} >
               <form onSubmit={(e) => this.getCards(e)}>
 
-                <select id="dropdown" ref={(input)=> this.menu = input}>
-                  <option value=""></option>
+                <select>
+                  
                   <option value="name" >Name</option>
                   <option value="cmc" >Converted Mana Cost</option>
                   <option value="colors" >Color</option>
@@ -104,18 +99,3 @@ export default HomePage;
 //   })
 // }
 //
-// getCards(e) {
-//   e.preventDefault();
-//   mtg.card.where({ Colors: this.state.cardName }).then((result) => {
-//     let returnedCards = result.map(card =>
-//       <div style={Styles.arial}>
-//         <h4>{card.name}</h4>
-//         <img src={card.imageUrl} />
-//         <div>
-//           <Button>Add to Collection</Button>
-//         </div>
-//       </div>
-//     );
-//     this.setState({returnedCards: returnedCards});
-//   })
-// }
