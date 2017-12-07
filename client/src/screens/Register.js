@@ -12,6 +12,7 @@ class RegisterPage extends React.Component {
     password: '',
     confirmPassword: ''
   }
+  
 
   setValue(e) {
     this.setState({[e.target.name]: e.target.value})
