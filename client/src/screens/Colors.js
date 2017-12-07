@@ -7,7 +7,7 @@ import Styles from '../styles'
 let key = 0
 const mtg = require('mtgsdk')
 
-class HomePage extends React.Component{
+class ColorsPage extends React.Component{
 
   state = {
     cardInfo: '',
@@ -21,7 +21,7 @@ class HomePage extends React.Component{
 
   getCards(e) {
     e.preventDefault();
-    mtg.card.where({ name: this.state.cardInfo }).then((result) => {
+    mtg.card.where({ colors: this.state.cardInfo }).then((result) => {
       let returnedCards = result.map(card =>
         <div style={Styles.arial}>
           <h4>{card.name}</h4>
@@ -85,7 +85,7 @@ class HomePage extends React.Component{
   }
 }
 
-export default HomePage;
+export default ColorsPage;
 
 // getCardsCmc(e) {
 //   e.preventDefault();

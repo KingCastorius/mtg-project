@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import LoginPage from './screens/Login'
 import HomePage from './screens/Home'
 import RegisterPage from './screens/Register'
+import CmcPage from './screens/Cmc'
+import ColorsPage from './screens/Colors'
+import TypePage from './screens/Type'
+import SubtypePage from './screens/Subtype'
+import PowerPage from './screens/Power'
+import ToughnessPage from './screens/Toughness'
 
 const Index = ({pathname}) => {
 	switch(pathname) {
@@ -12,7 +18,11 @@ const Index = ({pathname}) => {
       return <HomePage />
     case "/register":
       return <RegisterPage />
-    default:
+		case "/cmc":
+			return <CmcPage />
+		case "/colors":
+			return <ColorsPage />
+		default:
 			return <LoginPage />
 	}
 }

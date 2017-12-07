@@ -7,7 +7,7 @@ import Styles from '../styles'
 let key = 0
 const mtg = require('mtgsdk')
 
-class HomePage extends React.Component{
+class TypePage extends React.Component{
 
   state = {
     cardInfo: '',
@@ -21,7 +21,7 @@ class HomePage extends React.Component{
 
   getCards(e) {
     e.preventDefault();
-    mtg.card.where({ name: this.state.cardInfo }).then((result) => {
+    mtg.card.where({ cmc: this.state.cardInfo }).then((result) => {
       let returnedCards = result.map(card =>
         <div style={Styles.arial}>
           <h4>{card.name}</h4>
@@ -51,10 +51,10 @@ class HomePage extends React.Component{
             <Cell is="desktop-12" style={Styles.arial} >
               <form onSubmit={(e) => this.getCards(e)}>
 
-                <select>
+                <select onChange="javascript:location.href = this.value;">
 
-                  <option value="name" >Name</option>
-                  <option value="cmc" >Converted Mana Cost</option>
+                  <option value="cmc"  >Converted Mana Cost</option>
+                  <option value="name"  >Name</option>
                   <option value="colors" >Color</option>
                   <option value="type" >Type</option>
                   <option value="subtypes" >Subtypes</option>
@@ -64,7 +64,7 @@ class HomePage extends React.Component{
                 <input
                   name="cardInfo"
                   type="text"
-                  placeholder="search..."
+                  placeholder="Converted Mana Cost"
                   value={this.state.cardInfo}
                   onChange={(e) => this.setValue(e)}
                 />
@@ -85,21 +85,4 @@ class HomePage extends React.Component{
   }
 }
 
-export default HomePage;
-
-// getCardsCmc(e) {
-//   e.preventDefault();
-//   mtg.card.where({ cmc: this.state.cardName }).then((result) => {
-//     let returnedCards = result.map(card =>
-//       <div style={Styles.arial}>
-//         <h4>{card.name}</h4>
-//         <img src={card.imageUrl} />
-//         <div>
-//           <Button>Add to Collection</Button>
-//         </div>
-//       </div>
-//     );
-//     this.setState({returnedCards: returnedCards});
-//   })
-// }
-//
+export default TypePage;
