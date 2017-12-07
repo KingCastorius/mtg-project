@@ -22,6 +22,14 @@ const Index = ({pathname}) => {
 			return <CmcPage />
 		case "/colors":
 			return <ColorsPage />
+		case "/type":
+			return <TypePage />
+		case "/subtype":
+			return <SubtypePage />
+		case "/power":
+			return <PowerPage />
+		case "/toughness":
+			return <ToughnessPage />
 		default:
 			return <LoginPage />
 	}
