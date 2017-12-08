@@ -12,16 +12,18 @@ class HomePage extends React.Component{
   state = {
     cardInfo: '',
     returnedCards: [],
-    query: ''
+    query: '',
+    category: ''
   }
 
   setValue(e) {
   this.setState({[e.target.name]: e.target.value})
+  console.log(this.state)
 }
 
   getCards(e) {
     e.preventDefault();
-    mtg.card.where({ name: this.state.cardInfo }).then((result) => {
+    mtg.card.where({ [e.target.name]: this.state.cardInfo }).then((result) => {
       let returnedCards = result.map(card =>
         <div style={Styles.arial}>
           <h4>{card.name}</h4>
@@ -51,7 +53,7 @@ class HomePage extends React.Component{
             <Cell is="desktop-12" style={Styles.arial} >
               <form onSubmit={(e) => this.getCards(e)}>
 
-                <select>
+                <select value={this.state.category} onChange={(e)=> this.setValue(e)} name="category">
 
                   <option value="name" >Name</option>
                   <option value="cmc" >Converted Mana Cost</option>
