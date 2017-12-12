@@ -13,7 +13,7 @@ class HomePage extends React.Component{
     cardInfo: '',
     returnedCards: [],
     query: '',
-    category: ''
+    category: 'name'
   }
 
   setValue(e) {
@@ -23,17 +23,23 @@ class HomePage extends React.Component{
 
   getCards(e) {
     e.preventDefault();
-    mtg.card.where({ [e.target.name]: this.state.cardInfo }).then((result) => {
+    mtg.card.where({ [this.state.category]: this.state.cardInfo }).then((result) => {
       let returnedCards = result.map(card =>
-        <div style={Styles.arial}>
+        <div key={key++} style={Styles.arial}>
           <h4>{card.name}</h4>
           <img src={card.imageUrl} />
           <div>
-            <Button>Add to Collection</Button>
+            <Button onClick={()=> this.saveCard(card)} >Add to Collection</Button>
           </div>
         </div>
       );
       this.setState({returnedCards: returnedCards});
+    })
+  }
+
+  saveCard() {
+    axios.post('/cards', card).then(() => {
+      alert('Card added!')
     })
   }
 
