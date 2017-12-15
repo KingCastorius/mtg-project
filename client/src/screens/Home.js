@@ -18,7 +18,6 @@ class HomePage extends React.Component{
 
   setValue(e) {
   this.setState({[e.target.name]: e.target.value})
-  console.log(this.state)
 }
 
   getCards(e) {

@@ -18,18 +18,8 @@ const Index = ({pathname}) => {
       return <HomePage />
     case "/register":
       return <RegisterPage />
-		case "/cmc":
-			return <CmcPage />
-		case "/colors":
-			return <ColorsPage />
-		case "/type":
-			return <TypePage />
-		case "/subtype":
-			return <SubtypePage />
-		case "/power":
-			return <PowerPage />
-		case "/toughness":
-			return <ToughnessPage />
+		case "/collection":
+			return <CollectionPage />
 		default:
 			return <LoginPage />
 	}

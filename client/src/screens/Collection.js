@@ -7,7 +7,7 @@ import Styles from '../styles'
 let key = 0
 const mtg = require('mtgsdk')
 
-class PowerPage extends React.Component{
+class CollectionPage extends React.Component{
 
   state = {
     cardInfo: '',
@@ -41,7 +41,7 @@ class PowerPage extends React.Component{
         <Grid>
           <Row>
             <Cell is="desktop-12" style={Styles.arial}>
-              <h1 style={Styles.listColor}>MTG Collection Gallery</h1>
+              <h1 style={Styles.listColor}>My Card Collection</h1>
             </Cell>
           </Row>
         </Grid>
@@ -85,4 +85,4 @@ class PowerPage extends React.Component{
   }
 }
 
-export default PowerPage;
+export default CollectionPage;
