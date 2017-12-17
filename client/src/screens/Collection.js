@@ -10,77 +10,42 @@ const mtg = require('mtgsdk')
 class CollectionPage extends React.Component{
 
   state = {
-    cardInfo: '',
-    returnedCards: [],
-    query: ''
+    payload: null,
+    myCards: []
   }
 
-  setValue(e) {
-  this.setState({[e.target.name]: e.target.value})
-}
+  deleteCard(e) {
+    const authToken = localStorage.getItem('token');
+    const payload = (authToken) ? JSON.parse(window.atob(authToken.split('.')[1])) : null;
+    axios.delete('/cards/${payload.id}').then((res) => {
+      console.log(this.state.myCards)
+    })
+  }
 
-  getCards(e) {
-    e.preventDefault();
-    mtg.card.where({ cmc: this.state.cardInfo }).then((result) => {
-      let returnedCards = result.map(card =>
-        <div style={Styles.arial}>
+  componentDidMount() {
+    const authToken = localStorage.getItem('token');
+    const payload = (authToken) ? JSON.parse(window.atob(authToken.split('.')[1])) : null;
+    axios.get(`/cards/${payload.id}`).then((res) => {
+      let myCards = res.data.map(card =>
+        <div key={key++} style={Styles.arial}>
           <h4>{card.name}</h4>
           <img src={card.imageUrl} />
           <div>
-            <Button>Add to Collection</Button>
+            <Button onClick={(e) => this.deleteCard(e)}>Remove from Collection</Button>
           </div>
         </div>
       );
-      this.setState({returnedCards: returnedCards});
+      this.setState({myCards: myCards});
     })
   }
 
   render() {
     return(
-      <div style={Styles.bgColor}>
-        <Grid>
-          <Row>
-            <Cell is="desktop-12" style={Styles.arial}>
-              <h1 style={Styles.listColor}>My Card Collection</h1>
-            </Cell>
-          </Row>
-        </Grid>
-
-        <Grid>
-          <Row>
-            <Cell is="desktop-12" style={Styles.arial} >
-              <form onSubmit={(e) => this.getCards(e)}>
-
-                <select onChange="javascript:location.href = this.value;">
-
-                  <option value="cmc"  >Converted Mana Cost</option>
-                  <option value="name"  >Name</option>
-                  <option value="colors" >Color</option>
-                  <option value="type" >Type</option>
-                  <option value="subtypes" >Subtypes</option>
-                  <option value="power" >Power</option>
-                  <option value="toughness" >Toughness</option>
-                </select>
-                <input
-                  name="cardInfo"
-                  type="text"
-                  placeholder="Converted Mana Cost"
-                  value={this.state.cardInfo}
-                  onChange={(e) => this.setValue(e)}
-                />
-                <div>
-                  <Button color="primary" type="submit" >Submit</Button>
-                </div>
-              </form>
-            </Cell>
-          </Row>
-        </Grid>
-
-          <ul>
-            {this.state.returnedCards}
-          </ul>
-      </div>
-
+      <span>
+        <ul>
+          {this.state.myCards}
+        </ul>
+      </span>
     )
   }
 }

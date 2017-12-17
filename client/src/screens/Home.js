@@ -13,7 +13,14 @@ class HomePage extends React.Component{
     cardInfo: '',
     returnedCards: [],
     query: '',
-    category: 'name'
+    category: 'name',
+    payload: null
+  }
+
+  componentDidMount() {
+    const authToken = localStorage.getItem('token');
+    const payload = (authToken) ? JSON.parse(window.atob(authToken.split('.')[1])) : null;
+    this.setState({payload: payload})
   }
 
   setValue(e) {
@@ -36,7 +43,8 @@ class HomePage extends React.Component{
     })
   }
 
-  saveCard() {
+  saveCard(card) {
+    card.userId = this.state.payload.id;
     axios.post('/cards', card).then(() => {
       alert('Card added!')
     })
