@@ -13,6 +13,7 @@ class CollectionPage extends React.Component{
     payload: null,
     myCards: []
   }
+  
 
   deleteCard(e) {
     const authToken = localStorage.getItem('token');
