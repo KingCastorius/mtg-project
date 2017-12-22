@@ -27,4 +27,14 @@ router.get('/:id',(req, res) => {
   }))
 })
 
+router.delete('/:id',(req, res) => {
+  Card.delete({user_id: req.params['id']}, ((err, cards) => {
+    if(err) {
+      res.send(err)
+    } else {
+      res.json(cards)
+    }
+  }))
+})
+
 module.exports = router;
