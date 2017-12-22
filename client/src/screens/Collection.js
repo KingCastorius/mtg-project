@@ -18,8 +18,8 @@ class CollectionPage extends React.Component{
   deleteCard(e) {
     const authToken = localStorage.getItem('token');
     const payload = (authToken) ? JSON.parse(window.atob(authToken.split('.')[1])) : null;
-    axios.delete('/cards/${payload.id}').then((res) => {
-      console.log(this.state.myCards)
+    axios.delete(`/cards/${payload.id}`).then((res) => {
+      alert('card removed from collection.')
     })
   }
 
