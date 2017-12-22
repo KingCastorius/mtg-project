@@ -15,10 +15,10 @@ class CollectionPage extends React.Component{
   }
   
 
-  deleteCard(e) {
+  deleteCard(e, id) {
     const authToken = localStorage.getItem('token');
     const payload = (authToken) ? JSON.parse(window.atob(authToken.split('.')[1])) : null;
-    axios.delete(`/cards/${payload.id}`).then((res) => {
+    axios.delete(`/cards/${id}`).then((res) => {
       alert('card removed from collection.')
     })
   }
@@ -32,7 +32,7 @@ class CollectionPage extends React.Component{
           <h4>{card.name}</h4>
           <img src={card.imageUrl} />
           <div>
-            <Button onClick={(e) => this.deleteCard(e)}>Remove from Collection</Button>
+            <Button onClick={(e) => this.deleteCard(e, card._id)}>Remove from Collection</Button>
           </div>
         </div>
       );
