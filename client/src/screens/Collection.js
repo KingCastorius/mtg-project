@@ -39,6 +39,7 @@ class CollectionPage extends React.Component{
       this.setState({myCards: myCards});
     })
   }
+  
 
   render() {
     return(
