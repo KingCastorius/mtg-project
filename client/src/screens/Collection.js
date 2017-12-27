@@ -32,7 +32,7 @@ class CollectionPage extends React.Component{
           <h4>{card.name}</h4>
           <img src={card.imageUrl} />
           <div>
-            <Button onClick={(e) => this.deleteCard(e, card._id)}>Remove from Collection</Button>
+            <Button onClick={(e) => this.deleteCard(e, card._id)} color="danger">Remove from Collection</Button>
           </div>
         </div>
       );
@@ -43,11 +43,11 @@ class CollectionPage extends React.Component{
 
   render() {
     return(
-      <span>
-        <ul>
-          {this.state.myCards}
-        </ul>
-      </span>
+        <div style={Styles.bgColor}>
+          <ul>
+            {this.state.myCards}
+          </ul>
+        </div>
     )
   }
 }

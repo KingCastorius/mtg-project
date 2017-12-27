@@ -35,7 +35,7 @@ class HomePage extends React.Component{
           <h4>{card.name}</h4>
           <img src={card.imageUrl} />
           <div>
-            <Button onClick={()=> this.saveCard(card)} >Add to Collection</Button>
+            <Button onClick={()=> this.saveCard(card)} color="danger" >Add to Collection</Button>
           </div>
         </div>
       );
@@ -84,7 +84,7 @@ class HomePage extends React.Component{
                   onChange={(e) => this.setValue(e)}
                 />
                 <div>
-                  <Button color="primary" type="submit" >Submit</Button>
+                  <Button color="danger" type="submit" >Submit</Button>
                 </div>
               </form>
             </Cell>

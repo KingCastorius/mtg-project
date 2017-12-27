@@ -33,7 +33,8 @@ const Styles = {
 
 	arial: {
 		fontFamily: 'arial',
-		textAlign: 'center'
+		textAlign: 'center',
+		color: '#242423'
 	},
 
 	pageFooter: {
@@ -42,12 +43,12 @@ const Styles = {
     },
 
     bgColor: {
-    	backgroundColor: '#C4BBAF',
+    	backgroundColor: '#596475',
     	minHeight: '100vh'
 	  },
 
     listColor: {
-      color: '#D2D4C8',
+      color: '#E8EDDF',
   		fontFamily: 'arial',
 			textAlign: 'center'
     }
