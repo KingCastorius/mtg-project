@@ -6,6 +6,7 @@ import {Grid, Row, Cell} from 'react-inline-grid';
 import Styles from '../styles'
 let key = 0
 const mtg = require('mtgsdk')
+const coverImg = require('../tap.png')
 
 class HomePage extends React.Component{
 
@@ -56,14 +57,17 @@ class HomePage extends React.Component{
         <Grid>
           <Row>
             <Cell is="desktop-12" style={Styles.arial}>
-              <h1 style={Styles.listColor}>MTG Collection Gallery</h1>
+              <h1 style={Styles.listColor}>Tapped</h1>
+              <h1>
+                <img src={coverImg}/>
+              </h1>
             </Cell>
           </Row>
         </Grid>
 
         <Grid>
           <Row>
-            <Cell is="desktop-12" style={Styles.arial} >
+            <Cell is="desktop-12" style={Styles.pageFooter} >
               <form onSubmit={(e) => this.getCards(e)}>
 
                 <select value={this.state.category} onChange={(e)=> this.setValue(e)} name="category">

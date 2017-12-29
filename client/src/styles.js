@@ -34,7 +34,7 @@ const Styles = {
 	arial: {
 		fontFamily: 'arial',
 		textAlign: 'center',
-		color: '#242423'
+		color: '#D2D4C8'
 	},
 
 	pageFooter: {
