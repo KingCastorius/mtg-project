@@ -60,6 +60,7 @@ class HomePage extends React.Component{
               <a href="http://localhost:3000/home">Home  </a>
               <a href="http://localhost:3000/collection">Collection</a>
               <h1 style={Styles.listColor}>Tapped</h1>
+              <p>A Magic: the Gathering Collection Gallery</p>
               <h1>
                 <img src={coverImg}/>
               </h1>
