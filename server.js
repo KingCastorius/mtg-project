@@ -12,6 +12,9 @@ const users = require('./api/users')
 const cards = require('./api/cards')
 
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 mongoose.connect('mongodb://ryan:123@ds151917.mlab.com:51917/dolphins', {useMongoClient: true}).then(() => {
   console.log('db connected');
